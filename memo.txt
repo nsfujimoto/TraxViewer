@@ -1,0 +1,23 @@
+﻿picturebox1.Size = new Size(15000, 15000);
+            picturebox1.Location = new Point(-7500 + (panel1.Size.Width / 2), -7500 + (panel1.Size.Height / 2));
+            this.Controls.Add(picturebox1);
+            panel1.Controls.Add(picturebox1);
+
+            label.Size = new Size(0, 0);
+            label.Location = new Point(7500 + (panel1.Size.Width/2), 7500 + (panel1.Size.Height / 2));
+            //this.Controls.Add(label);
+            panel1.Controls.Add(label);
+            panel1.ScrollControlIntoView(label);
+
+            Bitmap canvas = new Bitmap(picturebox1.Width, picturebox1.Height);
+            Graphics g = Graphics.FromImage(canvas);
+            g.DrawLine(Pens.White, 0, 7500, picturebox1.Width, 7500);
+            Image img = Image.FromFile(@"Trax\horizontal_w.png");
+            g.DrawImage(img, 7500, 7500);
+
+            picturebox1.Image = canvas;
+            picturebox1.BackColor = Color.Black;
+
+            g = Graphics.FromImage(canvas);
+            g.DrawImage(img, 7550, 7500);
+            picturebox1.Image = canvas;
